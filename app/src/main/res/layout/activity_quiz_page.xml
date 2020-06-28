@@ -68,9 +68,11 @@
             android:textColor="@color/black"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.838"
-            tools:layout_editor_absoluteX="19dp" />
+            app:layout_constraintVertical_bias="0.838" />
 
         <TextView
             android:id="@+id/timer"
@@ -93,7 +95,9 @@
         android:id="@+id/choice1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
         android:layout_marginTop="61dp"
+        android:layout_marginRight="18dp"
         android:background="@drawable/choice_background"
         android:text="Option 1"
         android:textColor="@color/white"
@@ -107,7 +111,9 @@
         android:id="@+id/choice3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
         android:layout_marginTop="36dp"
+        android:layout_marginRight="18dp"
         android:background="@drawable/choice_background"
         android:text="Option 3"
         android:textColor="@color/white"
@@ -121,7 +127,9 @@
         android:id="@+id/choice2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
         android:layout_marginTop="32dp"
+        android:layout_marginRight="18dp"
         android:background="@drawable/choice_background"
         android:text="Option 2"
         android:textColor="@color/white"

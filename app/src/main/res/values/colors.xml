@@ -8,4 +8,10 @@
     <color name="black">#000000</color>
     <color name="background">#379AEA</color>
     <color name="choice_bg_color">#575555</color>
+    <color name="green">#8BC34A</color>
+    <color name="red">#D30E0E</color>
+    <color name="btn_green">#428A45</color>
+    <color name="btn_red">#8C1414</color>
+
+
 </resources>

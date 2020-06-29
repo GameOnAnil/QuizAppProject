@@ -6,11 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -21,10 +24,15 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 
 public class QuizPage extends AppCompatActivity {
+
+    private static final long COUNTDOWN_TOTAL = 15000;
+    private CountDownTimer countDownTimer;
+    private long timeLeft;
 
     private TextView txt_question_count;
     private TextView txt_question;
@@ -38,14 +46,14 @@ public class QuizPage extends AppCompatActivity {
     private int questionNo;
     private List<Question> questionList;
     private int questionCounter = 0;
-    ;
+
     private int questionCounterTotal;
     private Question currentQuestion;
 
-    private int score;
+    public int score=0;
     private boolean answered;
     private int opSelected = 0;
-    Dialog rightDiaglog, wrongDialog;
+    Dialog rightDiaglog, wrongDialog,timeupDialog;
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -61,8 +69,6 @@ public class QuizPage extends AppCompatActivity {
         option2 = (Button) findViewById(R.id.choice2);
         option3 = (Button) findViewById(R.id.choice3);
         next = (Button) findViewById(R.id.confirm);
-        ImageView rightImage = (ImageView) findViewById(R.id.right_image);
-        TextView rightText = (TextView) findViewById(R.id.right_text);
 
 
         QuizDbHelper dbHelper = new QuizDbHelper(this);
@@ -145,8 +151,10 @@ public class QuizPage extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void checkAnswer() {
         answered = true;
+        countDownTimer.cancel();
         next.setText("Next");
         if (opSelected == currentQuestion.getAnswerNr()) {
+            score++;
             showCorrectPopUp();
 
         } else {
@@ -175,6 +183,8 @@ public class QuizPage extends AppCompatActivity {
             option1.setEnabled(true);
             option2.setEnabled(true);
             option3.setEnabled(true);
+            timeLeft = COUNTDOWN_TOTAL;
+            startCountDown();
 
 
         } else {
@@ -182,8 +192,50 @@ public class QuizPage extends AppCompatActivity {
         }
     }
 
+    public void startCountDown(){
+        countDownTimer = new CountDownTimer(timeLeft,1000) {
+            @Override
+            public void onTick(long left) {
+                timeLeft = left;
+                updateCountDownText();
+            }
+
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void onFinish() {
+                timerFinished();
+
+
+            }
+        }.start();
+    }
+    private  void updateCountDownText(){
+        int minutes = (int) (timeLeft/1000)/60;
+        int second = (int) (timeLeft/1000)%60;
+
+        String timeFormatted = String.format(Locale.getDefault(),"%02d:%02d",minutes,second);
+        txt_timer.setText(timeFormatted);
+
+        if(timeLeft < 5000){
+            txt_timer.setTextColor(Color.RED);
+        }else{
+            txt_timer.setTextColor(Color.WHITE);
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void timerFinished(){
+        answered = true;
+        next.setText("Next");
+        showTimeupPopUp();
+        showCorrectAnswer();
+    }
+
 
     private void finishQuiz() {
+        Intent intent = new Intent(QuizPage.this,HighScorePage.class);
+        intent.putExtra("score",score);
+        startActivity(intent);
         finish();
     }
 
@@ -227,7 +279,27 @@ public class QuizPage extends AppCompatActivity {
                 wrongDialog.dismiss();
             }
         });
+    }
 
+    private void showTimeupPopUp() {
+        timeupDialog = new Dialog(this);
+        timeupDialog.setContentView(R.layout.timeup_msg_dialog);
+        timeupDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        timeupDialog.show();
+        dismiss = timeupDialog.findViewById(R.id.btn_dismiss);
+        TextView cross = (TextView )timeupDialog.findViewById(R.id.timeup_cross);
+        cross.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                timeupDialog.dismiss();
+            }
+        });
+        dismiss.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                timeupDialog.dismiss();
+            }
+        });
     }
 
 }

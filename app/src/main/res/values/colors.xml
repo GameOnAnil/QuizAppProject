@@ -12,6 +12,9 @@
     <color name="red">#D30E0E</color>
     <color name="btn_green">#428A45</color>
     <color name="btn_red">#8C1414</color>
+    <color name="highscore_bg">#434343</color>
+    <color name="darker_btn">#333333</color>
+
 
 
 </resources>

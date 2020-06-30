@@ -28,13 +28,22 @@ public class CategoryPage extends AppCompatActivity {
         Log.d(TAG, "initImageBitmaps: preparing bitmaps");
 
         mImagUrls.add(R.drawable.laughing );
-        mNames.add("Main for now");
+        mNames.add("Test category");
 
         mImagUrls.add(R.drawable.maths_school );
         mNames.add("Maths");
 
-        mImagUrls.add(R.drawable.harry_potter );
+        mImagUrls.add(R.drawable.harry );
         mNames.add("Harry potter");
+
+        mImagUrls.add(R.drawable.science );
+        mNames.add("Science");
+
+        mImagUrls.add(R.drawable.arts);
+        mNames.add("Arts");
+
+        mImagUrls.add(R.drawable.music );
+        mNames.add("Music");
 
 
 

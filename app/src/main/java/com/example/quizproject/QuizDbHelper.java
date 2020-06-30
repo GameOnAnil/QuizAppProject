@@ -19,7 +19,7 @@ public class QuizDbHelper extends SQLiteOpenHelper {
     private SQLiteDatabase db;
 
     public QuizDbHelper(Context context) {
-        super(context, DATABASE_NAME, null, 1);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
@@ -57,6 +57,7 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         addQuestion(q4);
         Question q5 =  new Question("How cool is this app ?", "It sucks", "Bloody brilliant", "It's alright", 2);
         addQuestion(q5);
+
     }
 
     private void addQuestion(Question question) {

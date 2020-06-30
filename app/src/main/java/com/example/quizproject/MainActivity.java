@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,QuizPage.class);
+                Intent intent = new Intent(MainActivity.this,CategoryPage.class);
+
                 startActivity(intent);
             }
         });

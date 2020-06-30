@@ -43,7 +43,6 @@ public class QuizPage extends AppCompatActivity {
     private Button next;
     private Button dismiss;
     private Map<String, String> question;
-    private int questionNo;
     private List<Question> questionList;
     private int questionCounter = 0;
 
@@ -70,7 +69,10 @@ public class QuizPage extends AppCompatActivity {
         option3 = (Button) findViewById(R.id.choice3);
         next = (Button) findViewById(R.id.confirm);
 
+        Intent intent = getIntent();
+        questionCounter = intent.getIntExtra("question_no",0);
 
+        //connecting database and getting question
         QuizDbHelper dbHelper = new QuizDbHelper(this);
         questionList = dbHelper.getAllQuestions();
 
@@ -171,6 +173,7 @@ public class QuizPage extends AppCompatActivity {
         option1.setBackground(getResources().getDrawable(R.drawable.choice_background));
         option2.setBackground(getResources().getDrawable(R.drawable.choice_background));
         option3.setBackground(getResources().getDrawable(R.drawable.choice_background));
+
         if (questionCounter < questionCounterTotal) {
             currentQuestion = questionList.get(questionCounter);
             txt_question.setText(currentQuestion.getQuestion());
@@ -209,6 +212,7 @@ public class QuizPage extends AppCompatActivity {
             }
         }.start();
     }
+
     private  void updateCountDownText(){
         int minutes = (int) (timeLeft/1000)/60;
         int second = (int) (timeLeft/1000)%60;
@@ -230,7 +234,6 @@ public class QuizPage extends AppCompatActivity {
         showTimeupPopUp();
         showCorrectAnswer();
     }
-
 
     private void finishQuiz() {
         Intent intent = new Intent(QuizPage.this,HighScorePage.class);

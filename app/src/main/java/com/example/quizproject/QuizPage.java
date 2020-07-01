@@ -45,6 +45,7 @@ public class QuizPage extends AppCompatActivity {
     private Map<String, String> question;
     private List<Question> questionList;
     private int questionCounter = 0;
+    private int category_no = 0;
 
     private int questionCounterTotal;
     private Question currentQuestion;
@@ -70,11 +71,16 @@ public class QuizPage extends AppCompatActivity {
         next = (Button) findViewById(R.id.confirm);
 
         Intent intent = getIntent();
-        questionCounter = intent.getIntExtra("question_no",0);
+        category_no = intent.getIntExtra("category_no",0);
 
         //connecting database and getting question
         QuizDbHelper dbHelper = new QuizDbHelper(this);
-        questionList = dbHelper.getAllQuestions();
+        if(category_no == 1){
+            questionList = dbHelper.getAllQuestions();
+        }else if(category_no == 2){
+            questionList = dbHelper.getAllQuestions2();
+        }
+
 
         questionCounterTotal = questionList.size();
 
@@ -233,6 +239,7 @@ public class QuizPage extends AppCompatActivity {
         next.setText("Next");
         showTimeupPopUp();
         showCorrectAnswer();
+        category_no = 0;
     }
 
     private void finishQuiz() {

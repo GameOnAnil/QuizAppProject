@@ -47,7 +47,7 @@
                 android:textStyle="bold"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="25sp"
+                android:textSize="30sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +73,7 @@
 
         <Button
             android:id="@+id/btn_again"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="52dp"
             android:background="@drawable/highscore_btn_bg"

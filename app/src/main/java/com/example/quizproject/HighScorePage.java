@@ -48,7 +48,7 @@ public class HighScorePage extends AppCompatActivity {
         btn_again.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HighScorePage.this,QuizPage.class);
+                Intent intent = new Intent(HighScorePage.this,CategoryPage.class);
                 startActivity(intent);
             }
         });

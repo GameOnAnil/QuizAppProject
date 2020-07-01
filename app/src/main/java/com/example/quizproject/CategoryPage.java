@@ -36,8 +36,8 @@ public class CategoryPage extends AppCompatActivity {
         mImagUrls.add(R.drawable.harry );
         mNames.add("Harry potter");
 
-        mImagUrls.add(R.drawable.science );
-        mNames.add("Science");
+        mImagUrls.add(R.drawable.game_of_thrones );
+        mNames.add("Game Of Thrones");
 
         mImagUrls.add(R.drawable.arts);
         mNames.add("Arts");

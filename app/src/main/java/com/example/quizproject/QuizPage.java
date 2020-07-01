@@ -30,7 +30,7 @@ import java.util.Map;
 
 public class QuizPage extends AppCompatActivity {
 
-    private static final long COUNTDOWN_TOTAL = 15000;
+    private static final long COUNTDOWN_TOTAL = 30000;
     private CountDownTimer countDownTimer;
     private long timeLeft;
 
@@ -81,7 +81,8 @@ public class QuizPage extends AppCompatActivity {
             questionList = dbHelper.getAllQuestions2();
         }else if(category_no == 3){
             questionList = dbHelper.getAllQuestions3();
-        }
+        }else if(category_no == 4){
+        questionList = dbHelper.getAllQuestions4();}
 
 
         questionCounterTotal = questionList.size();
@@ -228,7 +229,7 @@ public class QuizPage extends AppCompatActivity {
         String timeFormatted = String.format(Locale.getDefault(),"%02d:%02d",minutes,second);
         txt_timer.setText(timeFormatted);
 
-        if(timeLeft < 5000){
+        if(timeLeft < 10000){
             txt_timer.setTextColor(Color.RED);
         }else{
             txt_timer.setTextColor(Color.WHITE);

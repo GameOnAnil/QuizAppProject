@@ -66,7 +66,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     mContext.startActivity(intent);
 
                 }else if(mImageNames.get(position)=="Harry potter") {
-                    Toast.makeText(mContext,"Not available right now",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(mContext,QuizPage.class);
+                    intent.putExtra("category_no",3);
+                    mContext.startActivity(intent);
                 }
                 else if(mImageNames.get(position)=="Science"){
                     Toast.makeText(mContext,"Not available right now",Toast.LENGTH_SHORT).show();

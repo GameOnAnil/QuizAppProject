@@ -248,6 +248,7 @@ public class QuizPage extends AppCompatActivity {
     private void finishQuiz() {
         Intent intent = new Intent(QuizPage.this,HighScorePage.class);
         intent.putExtra("score",score);
+        intent.putExtra("total",questionCounterTotal);
         startActivity(intent);
         finish();
     }

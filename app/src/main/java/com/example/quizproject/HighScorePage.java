@@ -14,7 +14,7 @@ import android.widget.TextView;
 public class HighScorePage extends AppCompatActivity {
 
     private Dialog highscore;
-    private TextView main_txt;
+    private TextView main_txt,txt_description;
     private Button btn_again;
     int score =0;
     int total ;
@@ -44,6 +44,17 @@ public class HighScorePage extends AppCompatActivity {
 
         main_txt = (TextView) highscore.findViewById(R.id.main_text);
         btn_again = (Button) highscore.findViewById(R.id.btn_again);
+        txt_description = (TextView) highscore.findViewById(R.id.txt_description);
+
+        if(score>=8){
+            txt_description.setText("You must have cheated");
+        }else if(score>5){
+            txt_description.setText("Not bad for an Idiot!");
+        }else
+        {
+            txt_description.setText("GO Back To School Idiot!");
+        }
+
 
         main_txt.setText("High score: "+score + "/"+total);
 

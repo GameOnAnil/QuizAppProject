@@ -15,6 +15,7 @@ public class CategoryPage extends AppCompatActivity {
 
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<Integer> mImagUrls = new ArrayList<>();
+    private ArrayList<String> mDescription = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,23 +30,23 @@ public class CategoryPage extends AppCompatActivity {
 
         mImagUrls.add(R.drawable.laughing );
         mNames.add("Test category");
+        mDescription.add("This is for testing only");
 
         mImagUrls.add(R.drawable.maths_school );
         mNames.add("Maths");
+        mDescription.add("If you like Maths.");
 
         mImagUrls.add(R.drawable.harry );
         mNames.add("Harry potter");
+        mDescription.add("Cause I fucking love harry potter!");
 
         mImagUrls.add(R.drawable.game_of_thrones );
         mNames.add("Game Of Thrones");
+        mDescription.add("Ok who hasn't seen GOT");
 
-        mImagUrls.add(R.drawable.arts);
-        mNames.add("Arts");
-
-        mImagUrls.add(R.drawable.music );
-        mNames.add("Music");
-
-
+        mImagUrls.add(R.drawable.naruto );
+        mNames.add("Naruto");
+        mDescription.add("Ok i haven't seen Naruto, i just thought it looked cool to have it here.");
 
         initRecyclerView();
 
@@ -54,7 +55,7 @@ public class CategoryPage extends AppCompatActivity {
     private void  initRecyclerView(){
         Log.d(TAG, "initRecyclerView: init recyclerview.");
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this,mImagUrls,mNames);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this,mImagUrls,mNames,mDescription);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }

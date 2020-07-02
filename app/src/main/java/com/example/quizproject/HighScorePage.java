@@ -16,7 +16,8 @@ public class HighScorePage extends AppCompatActivity {
     private Dialog highscore;
     private TextView main_txt;
     private Button btn_again;
-    int totalcount =0;
+    int score =0;
+    int total ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,8 @@ public class HighScorePage extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle extra = getIntent().getExtras();
         if(extra != null){
-            totalcount  = intent.getIntExtra("score",0);
+            score  = intent.getIntExtra("score",0);
+            total = intent.getIntExtra("total",0);
         }
 
         showHighscore();
@@ -43,7 +45,7 @@ public class HighScorePage extends AppCompatActivity {
         main_txt = (TextView) highscore.findViewById(R.id.main_text);
         btn_again = (Button) highscore.findViewById(R.id.btn_again);
 
-        main_txt.setText("High score: "+totalcount);
+        main_txt.setText("High score: "+score + "/"+total);
 
         btn_again.setOnClickListener(new View.OnClickListener() {
             @Override

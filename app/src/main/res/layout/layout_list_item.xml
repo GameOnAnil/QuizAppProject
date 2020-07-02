@@ -20,7 +20,18 @@
         android:layout_toRightOf="@id/image"
         android:text="Maths"
         android:textSize="25sp"
-        android:layout_centerVertical="true"/>
+        android:textColor="#000"
+       />
+
+    <TextView
+        android:id="@+id/image_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/image"
+        android:layout_below="@+id/image_name"
+        android:text="demo text"
+        android:textSize="20sp"
+        android:layout_marginLeft="37dp"/>
 
 
 </RelativeLayout>

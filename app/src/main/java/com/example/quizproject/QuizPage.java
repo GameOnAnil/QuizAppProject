@@ -270,6 +270,7 @@ public class QuizPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 rightDiaglog.dismiss();
+                showNextQuestion();
             }
         });
     }
@@ -291,6 +292,7 @@ public class QuizPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 wrongDialog.dismiss();
+                showNextQuestion();
             }
         });
     }

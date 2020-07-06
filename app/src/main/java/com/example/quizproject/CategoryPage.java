@@ -46,7 +46,7 @@ public class CategoryPage extends AppCompatActivity {
 
         mImagUrls.add(R.drawable.naruto );
         mNames.add("Naruto");
-        mDescription.add("Ok i haven't seen Naruto, i just thought it looked cool to have it here.");
+        mDescription.add("Ok i haven't seen Naruto, but this shit has 500 episodes!!");
 
         initRecyclerView();
 

@@ -11,7 +11,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:padding="8dp"
         android:id="@+id/parent_layout">
 
         <ImageView
@@ -27,7 +27,7 @@
             android:layout_marginLeft="37dp"
             android:layout_toRightOf="@id/image"
             android:text="Maths"
-            android:textSize="30sp"
+            android:textSize="28sp"
             android:textColor="#000"
             />
 
@@ -38,7 +38,7 @@
             android:layout_toRightOf="@+id/image"
             android:layout_below="@+id/image_name"
             android:text="demo text"
-            android:textSize="25sp"
+            android:textSize="23sp"
             android:layout_marginLeft="37dp"
             android:layout_marginTop="5dp"/>
     </RelativeLayout>

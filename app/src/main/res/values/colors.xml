@@ -8,14 +8,16 @@
     <color name="black">#000000</color>
     <color name="background">#379AEA</color>
     <color name="choice_bg_color">#575555</color>
-    <color name="green">#8BC34A</color>
+
+    <color name="green">#4CAF50</color>
     <color name="red">#D30E0E</color>
-    <color name="btn_green">#428A45</color>
+    <color name="btn_green">#8BC34A</color>
     <color name="btn_red">#8C1414</color>
     <color name="highscore_bg">#434343</color>
     <color name="darker_btn">#333333</color>
     <color name="light_gary">#918E8E</color>
     <color name="soft_gray">#C5C2C2</color>
+    <color name="background_gray">#C5C2C2</color>
 
 
 

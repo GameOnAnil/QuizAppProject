@@ -82,15 +82,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     intent.putExtra("category_no", 5);
                     mContext.startActivity(intent);
 
-                   // Toast.makeText(mContext, "Not available right now", Toast.LENGTH_SHORT).show();
-
                 }
                 else if (mImageNames.get(position) == "Naruto") {
-//                    Intent intent = new Intent(mContext, QuizPage.class);
-//                    intent.putExtra("category_no", 6);
-//                    mContext.startActivity(intent);
-
-                    Toast.makeText(mContext, "Not available right now", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(mContext, QuizPage.class);
+                    intent.putExtra("category_no", 6);
+                    mContext.startActivity(intent);
 
                 }
             }

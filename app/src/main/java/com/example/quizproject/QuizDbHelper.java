@@ -15,7 +15,7 @@ import java.util.List;
 
 public class QuizDbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "QuizProject.db";
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 8;
 
     private SQLiteDatabase db;
 
@@ -81,16 +81,29 @@ public class QuizDbHelper extends SQLiteOpenHelper {
                 QuestionsTable.COLUMN_ANSWER_NR + " INTEGER" +
                 ")";
 
+        //Creating 6th table
+        final String SQL_CREATE_QUESTIONS_TABLE6 = "CREATE TABLE " +
+                QuestionsTable.TABLE_NAME6 + " ( " +
+                QuestionsTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                QuestionsTable.COLUMN_QUESTION + " TEXT, " +
+                QuestionsTable.COLUMN_OPTION1 + " TEXT, " +
+                QuestionsTable.COLUMN_OPTION2 + " TEXT, " +
+                QuestionsTable.COLUMN_OPTION3 + " TEXT, " +
+                QuestionsTable.COLUMN_ANSWER_NR + " INTEGER" +
+                ")";
+
         db.execSQL(SQL_CREATE_QUESTIONS_TABLE);
         db.execSQL(SQL_CREATE_QUESTIONS_TABLE2);
         db.execSQL(SQL_CREATE_QUESTIONS_TABLE3);
         db.execSQL(SQL_CREATE_QUESTIONS_TABLE4);
         db.execSQL(SQL_CREATE_QUESTIONS_TABLE5);
+        db.execSQL(SQL_CREATE_QUESTIONS_TABLE6);
         fillQuestionsTable();
         fillQuestionsTable2();
         fillQuestionsTable3();
         fillQuestionsTable4();
         fillQuestionsTable5();
+        fillQuestionsTable6();
     }
 
     @Override
@@ -100,6 +113,7 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + QuestionsTable.TABLE_NAME3);
         db.execSQL("DROP TABLE IF EXISTS " + QuestionsTable.TABLE_NAME4);
         db.execSQL("DROP TABLE IF EXISTS " + QuestionsTable.TABLE_NAME5);
+        db.execSQL("DROP TABLE IF EXISTS " + QuestionsTable.TABLE_NAME6);
 
         onCreate(db);
     }
@@ -374,6 +388,63 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         List<Question> questionList = new ArrayList<>();
         db = getReadableDatabase();
         Cursor c = db.rawQuery("SELECT * FROM " + QuestionsTable.TABLE_NAME5, null);
+
+        if (c.moveToFirst()) {
+            do {
+                Question question = new Question();
+                question.setQuestion(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_QUESTION)));
+                question.setOption1(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_OPTION1)));
+                question.setOption2(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_OPTION2)));
+                question.setOption3(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_OPTION3)));
+                question.setAnswerNr(c.getInt(c.getColumnIndex(QuestionsTable.COLUMN_ANSWER_NR)));
+                questionList.add(question);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+        return questionList;
+    }
+
+    //FOR TABLE 6
+    private void fillQuestionsTable6() {
+        Question h1 = new Question("Who is Itachi's sidekick/teammate?","Kisame","Sasuke","Orochimaru",1);
+        addQuestion6(h1);
+        Question m2 = new Question("What is Shino's last name?","Akimichi","Aburame","Uzumaki",2);
+        addQuestion6(m2);
+        Question m3 = new Question("Who killed the 3rd Hokage?","Gaara","1st and 2nd Hokage","Orochimaru",3);
+        addQuestion6(m3);
+        Question m4 = new Question("Who likes Naruto?","Sakura","Tenten","Hinata",3);
+        addQuestion6(m4);
+        Question m5 = new Question("Who likes Sasuke?","Ino and Sakura","Tenten","Hinata",1);
+        addQuestion6(m5);
+        Question m6 = new Question("Who are the 3 people who could use the Sharingan?","Neji, Hinata, and Kakashi","Jiraiya, Tsundae, and Orochimaru","Itachi, Sasuke, and Kakashi",3);
+        addQuestion6(m6);
+        Question m7 = new Question("Why does Sasuke want to kill his brother?","Because his brother killed the Uchiha clan except for him","Because he voted for Trump","Because he spoiled GOT",1);
+        addQuestion6(m7);
+        Question m8 = new Question("What is Team 7's 1st enemy. Hint: he was a Jounin and called The Demon Hidden in the Mist.","Orochimaru","Zabuza","Haku",2);
+        addQuestion6(m8);
+        Question m9 = new Question("What are the members of Team 10?","Ino, Chouji, Shikamaru, and Asuma","Neji, Lee, Tenten, and Guy","Hinata, Shino, Kiba, and Kurenai",1);
+        addQuestion6(m9);
+        Question m10 = new Question("What are the 2 other members of Kabuto's team during the Chuunin exams?","Orochimaru and Anko","Misumi and Yoroi","Sasuke and Naruto",2);
+        addQuestion6(m10);
+
+    }
+
+    private void addQuestion6(Question question) {
+
+        ContentValues cv = new ContentValues();
+        cv.put(QuestionsTable.COLUMN_QUESTION, question.getQuestion());
+        cv.put(QuestionsTable.COLUMN_OPTION1, question.getOption1());
+        cv.put(QuestionsTable.COLUMN_OPTION2, question.getOption2());
+        cv.put(QuestionsTable.COLUMN_OPTION3, question.getOption3());
+        cv.put(QuestionsTable.COLUMN_ANSWER_NR, question.getAnswerNr());
+        db.insert(QuestionsTable.TABLE_NAME6, null, cv);
+    }
+
+    public List<Question> getAllQuestions6() {
+        List<Question> questionList = new ArrayList<>();
+        db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM " + QuestionsTable.TABLE_NAME6, null);
 
         if (c.moveToFirst()) {
             do {

@@ -15,7 +15,7 @@ import java.util.List;
 
 public class QuizDbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "QuizProject.db";
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
 
     private SQLiteDatabase db;
 
@@ -70,15 +70,27 @@ public class QuizDbHelper extends SQLiteOpenHelper {
                 QuestionsTable.COLUMN_OPTION3 + " TEXT, " +
                 QuestionsTable.COLUMN_ANSWER_NR + " INTEGER" +
                 ")";
+//Creating 5th table
+        final String SQL_CREATE_QUESTIONS_TABLE5 = "CREATE TABLE " +
+                QuestionsTable.TABLE_NAME5 + " ( " +
+                QuestionsTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                QuestionsTable.COLUMN_QUESTION + " TEXT, " +
+                QuestionsTable.COLUMN_OPTION1 + " TEXT, " +
+                QuestionsTable.COLUMN_OPTION2 + " TEXT, " +
+                QuestionsTable.COLUMN_OPTION3 + " TEXT, " +
+                QuestionsTable.COLUMN_ANSWER_NR + " INTEGER" +
+                ")";
 
         db.execSQL(SQL_CREATE_QUESTIONS_TABLE);
         db.execSQL(SQL_CREATE_QUESTIONS_TABLE2);
         db.execSQL(SQL_CREATE_QUESTIONS_TABLE3);
         db.execSQL(SQL_CREATE_QUESTIONS_TABLE4);
+        db.execSQL(SQL_CREATE_QUESTIONS_TABLE5);
         fillQuestionsTable();
         fillQuestionsTable2();
         fillQuestionsTable3();
         fillQuestionsTable4();
+        fillQuestionsTable5();
     }
 
     @Override
@@ -87,6 +99,8 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + QuestionsTable.TABLE_NAME2);
         db.execSQL("DROP TABLE IF EXISTS " + QuestionsTable.TABLE_NAME3);
         db.execSQL("DROP TABLE IF EXISTS " + QuestionsTable.TABLE_NAME4);
+        db.execSQL("DROP TABLE IF EXISTS " + QuestionsTable.TABLE_NAME5);
+
         onCreate(db);
     }
 
@@ -303,6 +317,63 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         List<Question> questionList = new ArrayList<>();
         db = getReadableDatabase();
         Cursor c = db.rawQuery("SELECT * FROM " + QuestionsTable.TABLE_NAME4, null);
+
+        if (c.moveToFirst()) {
+            do {
+                Question question = new Question();
+                question.setQuestion(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_QUESTION)));
+                question.setOption1(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_OPTION1)));
+                question.setOption2(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_OPTION2)));
+                question.setOption3(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_OPTION3)));
+                question.setAnswerNr(c.getInt(c.getColumnIndex(QuestionsTable.COLUMN_ANSWER_NR)));
+                questionList.add(question);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+        return questionList;
+    }
+
+    //FOR TABLE 5
+    private void fillQuestionsTable5() {
+        Question h1 = new Question("What is the title of the Italian protest song which is played throughout the series?","Bella ciao","Waka Waka","Macarena",1);
+        addQuestion5(h1);
+        Question m2 = new Question("How much money did the gang manage to steal from the Royal Mint of Spain?","€2.1 billion","€2.4 billion","€2.7 billion",2);
+        addQuestion5(m2);
+        Question m3 = new Question("What is Tokyo's real name in the series?","Alba Flores.","Úrsula Corberó","Silene Oliveira",3);
+        addQuestion5(m3);
+        Question m4 = new Question("Who instructed Denver to dispose of hostage Mónica?","Berlin","Professor","Helsinki",1);
+        addQuestion5(m4);
+        Question m5 = new Question("What name does The Professor use as a false identity during the Royal Mint robbery?","James Bond?","Salvador 'Salva' Martín","Heisenberg",2);
+        addQuestion5(m5);
+        Question m6 = new Question("What was Lisbon's name before she was given her alias?","Tokyo","Silene Oliveira","Raquel Murillo",3);
+        addQuestion5(m6);
+        Question m7 = new Question(" In which part of the body does Manila shoot Arturo?","Eyes","The leg","Arm",2);
+        addQuestion5(m7);
+        Question m8 = new Question("Which country does Helsinki originally come from?","Itali","Serbia","Romania",2);
+        addQuestion5(m8);
+        Question m9 = new Question("How many robberies did Berlin say he committed as a jewellery thief?","20","25","27",3);
+        addQuestion5(m9);
+        Question m10 = new Question("How did Moscow die?","Shot by police","Suicide","Fell to his death",1);
+        addQuestion5(m10);
+
+    }
+
+    private void addQuestion5(Question question) {
+
+        ContentValues cv = new ContentValues();
+        cv.put(QuestionsTable.COLUMN_QUESTION, question.getQuestion());
+        cv.put(QuestionsTable.COLUMN_OPTION1, question.getOption1());
+        cv.put(QuestionsTable.COLUMN_OPTION2, question.getOption2());
+        cv.put(QuestionsTable.COLUMN_OPTION3, question.getOption3());
+        cv.put(QuestionsTable.COLUMN_ANSWER_NR, question.getAnswerNr());
+        db.insert(QuestionsTable.TABLE_NAME5, null, cv);
+    }
+
+    public List<Question> getAllQuestions5() {
+        List<Question> questionList = new ArrayList<>();
+        db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM " + QuestionsTable.TABLE_NAME5, null);
 
         if (c.moveToFirst()) {
             do {

@@ -13,6 +13,7 @@ public final class QuizContract {
         public static final String TABLE_NAME2 = "category2";
         public static final String TABLE_NAME3 = "category3";
         public static final String TABLE_NAME4 = "category4";
+        public static final String TABLE_NAME5 = "category5";
         public static final String COLUMN_QUESTION = "question";
         public static final String COLUMN_OPTION1 = "option1";
         public static final String COLUMN_OPTION2 = "option2";

@@ -83,6 +83,8 @@ public class QuizPage extends AppCompatActivity {
             questionList = dbHelper.getAllQuestions3();
         } else if (category_no == 4) {
             questionList = dbHelper.getAllQuestions4();
+        }else if (category_no == 5){
+            questionList = dbHelper.getAllQuestions5();
         }
 
 

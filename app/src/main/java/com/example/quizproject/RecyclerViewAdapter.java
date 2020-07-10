@@ -59,7 +59,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View view) {
                 Log.d(TAG, "onClick: clicked on: " + mImageNames.get(position));
 
-                if (mImageNames.get(position) == "Test category") {
+                if (mImageNames.get(position) == "General Knowledge") {
                     Intent intent = new Intent(mContext, QuizPage.class);
                     intent.putExtra("category_no", 1);
                     mContext.startActivity(intent);

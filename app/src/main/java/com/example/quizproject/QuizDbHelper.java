@@ -15,7 +15,7 @@ import java.util.List;
 
 public class QuizDbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "QuizProject.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 4;
 
     private SQLiteDatabase db;
 
@@ -93,16 +93,26 @@ public class QuizDbHelper extends SQLiteOpenHelper {
 
     //FOR TABLE 1
     private void fillQuestionsTable() {
-        Question q1 = new Question("What is 2 * 2", "4", "2", "0", 1);
+        Question q1 = new Question("What is the color of Donald Duck’s bowtie?","Red","Yellow","Blue",1);
         addQuestion(q1);
-        Question q2 = new Question("15/5+27", "Non of the below", "5", "30", 3);
+        Question q2 = new Question("Which animal does not appear in the Chinese zodiac?","Dragon","Rabbit","Hummingbird",3);
         addQuestion(q2);
-        Question q3 = new Question("Are you boored", "Yes", "I am having a blast", "No", 2);
+        Question q3 = new Question("Which country held the 2016 Summer Olympics?","Brazil","China","Ireland",1);
         addQuestion(q3);
-        Question q4 = new Question("Do you like anime", "Hell yeah", "Little bit", "Nah", 1);
+        Question q4 = new Question("Which planet is the hottest?","Venus","Mercury","Saturn",1);
         addQuestion(q4);
-        Question q5 = new Question("How cool is this app ?", "It sucks", "Bloody brilliant", "It's alright", 2);
+        Question q5 = new Question("What does the “D” in “D-Day” stand for?","Dooms","Dick? :D","Denmark",3);
         addQuestion(q5);
+        Question q6 = new Question("In Pirates of the Caribbean, what was the name of Captain Jack Sparrow’s ship?","The Marauder","The Black Pearl","The Black Python",2);
+        addQuestion(q6);
+        Question q7 = new Question("According to Forrest Gump, “life was like…”","A bag of lemons","Buzz lightyear!","A box of chocolates",3);
+        addQuestion(q7);
+        Question q8 = new Question("What is the rarest blood type?","O","AB-Negative","A",2);
+        addQuestion(q8);
+        Question q9 = new Question("Which one of these characters aren’t a part of the Friends group?","Joey","Chandler","Gunther\n'What a Simp!!'",3);
+        addQuestion(q9);
+        Question q10 = new Question("How many bones are there in the human body?","206","106","201",1);
+        addQuestion(q10);
 
     }
 

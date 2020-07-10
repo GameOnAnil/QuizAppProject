@@ -18,13 +18,14 @@
             android:id="@+id/image"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@mipmap/ic_launcher"/>
+            android:src="@mipmap/ic_launcher"
+           />
 
         <TextView
             android:id="@+id/image_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="37dp"
+            android:layout_marginLeft="35dp"
             android:layout_toRightOf="@id/image"
             android:text="Maths"
             android:textSize="28sp"
@@ -38,8 +39,8 @@
             android:layout_toRightOf="@+id/image"
             android:layout_below="@+id/image_name"
             android:text="demo text"
-            android:textSize="23sp"
-            android:layout_marginLeft="37dp"
+            android:textSize="20sp"
+            android:layout_marginLeft="35dp"
             android:layout_marginTop="5dp"/>
     </RelativeLayout>
 

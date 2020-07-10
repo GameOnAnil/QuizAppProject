@@ -1,11 +1,13 @@
 package com.example.quizproject;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +20,9 @@ public class HighScorePage extends AppCompatActivity {
     private Button btn_again;
     int score =0;
     int total ;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

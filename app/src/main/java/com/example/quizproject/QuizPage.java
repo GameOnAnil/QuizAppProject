@@ -50,11 +50,10 @@ public class QuizPage extends AppCompatActivity {
     private int questionCounterTotal;
     private Question currentQuestion;
 
-    public int score=0;
+    public int score = 0;
     private boolean answered;
     private int opSelected = 0;
-    Dialog rightDiaglog, wrongDialog,timeupDialog;
-
+    Dialog rightDiaglog, wrongDialog, timeupDialog;
 
 
     @Override
@@ -71,18 +70,20 @@ public class QuizPage extends AppCompatActivity {
         next = (Button) findViewById(R.id.confirm);
 
         Intent intent = getIntent();
-        category_no = intent.getIntExtra("category_no",0);
+        category_no = intent.getIntExtra("category_no", 0);
+
 
         //connecting database and getting question
         QuizDbHelper dbHelper = new QuizDbHelper(this);
-        if(category_no == 1){
+        if (category_no == 1) {
             questionList = dbHelper.getAllQuestions();
-        }else if(category_no == 2){
+        } else if (category_no == 2) {
             questionList = dbHelper.getAllQuestions2();
-        }else if(category_no == 3){
+        } else if (category_no == 3) {
             questionList = dbHelper.getAllQuestions3();
-        }else if(category_no == 4){
-        questionList = dbHelper.getAllQuestions4();}
+        } else if (category_no == 4) {
+            questionList = dbHelper.getAllQuestions4();
+        }
 
 
         questionCounterTotal = questionList.size();
@@ -204,8 +205,8 @@ public class QuizPage extends AppCompatActivity {
         }
     }
 
-    public void startCountDown(){
-        countDownTimer = new CountDownTimer(timeLeft,1000) {
+    public void startCountDown() {
+        countDownTimer = new CountDownTimer(timeLeft, 1000) {
             @Override
             public void onTick(long left) {
                 timeLeft = left;
@@ -222,22 +223,22 @@ public class QuizPage extends AppCompatActivity {
         }.start();
     }
 
-    private  void updateCountDownText(){
-        int minutes = (int) (timeLeft/1000)/60;
-        int second = (int) (timeLeft/1000)%60;
+    private void updateCountDownText() {
+        int minutes = (int) (timeLeft / 1000) / 60;
+        int second = (int) (timeLeft / 1000) % 60;
 
-        String timeFormatted = String.format(Locale.getDefault(),"%02d:%02d",minutes,second);
+        String timeFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, second);
         txt_timer.setText(timeFormatted);
 
-        if(timeLeft < 10000){
+        if (timeLeft < 10000) {
             txt_timer.setTextColor(Color.RED);
-        }else{
+        } else {
             txt_timer.setTextColor(Color.WHITE);
         }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
-    private void timerFinished(){
+    private void timerFinished() {
         answered = true;
         next.setText("Next");
         showTimeupPopUp();
@@ -246,9 +247,9 @@ public class QuizPage extends AppCompatActivity {
     }
 
     private void finishQuiz() {
-        Intent intent = new Intent(QuizPage.this,HighScorePage.class);
-        intent.putExtra("score",score);
-        intent.putExtra("total",questionCounterTotal);
+        Intent intent = new Intent(QuizPage.this, HighScorePage.class);
+        intent.putExtra("score", score);
+        intent.putExtra("total", questionCounterTotal);
         startActivity(intent);
         finish();
     }
@@ -259,7 +260,7 @@ public class QuizPage extends AppCompatActivity {
         rightDiaglog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         rightDiaglog.show();
         dismiss = rightDiaglog.findViewById(R.id.btn_dismiss);
-        TextView cross = (TextView )rightDiaglog.findViewById(R.id.right_cross);
+        TextView cross = (TextView) rightDiaglog.findViewById(R.id.right_cross);
         cross.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -281,7 +282,7 @@ public class QuizPage extends AppCompatActivity {
         wrongDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         wrongDialog.show();
         dismiss = wrongDialog.findViewById(R.id.btn_dismiss);
-        TextView cross = (TextView )wrongDialog.findViewById(R.id.wrong_cross);
+        TextView cross = (TextView) wrongDialog.findViewById(R.id.wrong_cross);
         cross.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -303,7 +304,7 @@ public class QuizPage extends AppCompatActivity {
         timeupDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         timeupDialog.show();
         dismiss = timeupDialog.findViewById(R.id.btn_dismiss);
-        TextView cross = (TextView )timeupDialog.findViewById(R.id.timeup_cross);
+        TextView cross = (TextView) timeupDialog.findViewById(R.id.timeup_cross);
         cross.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.appcompat.widget.Toolbar;
-
 public class MainActivity extends AppCompatActivity {
     private Button next;
 
@@ -17,15 +15,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         next = (Button) findViewById(R.id.next_page);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,CategoryPage.class);
+                Intent intent = new Intent(MainActivity.this, CategoryPage.class);
 
                 startActivity(intent);
             }
         });
 
     }
+
 }

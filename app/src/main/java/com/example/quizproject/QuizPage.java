@@ -56,6 +56,7 @@ public class QuizPage extends AppCompatActivity {
     Dialog rightDiaglog, wrongDialog, timeupDialog;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +69,11 @@ public class QuizPage extends AppCompatActivity {
         option2 = (Button) findViewById(R.id.choice2);
         option3 = (Button) findViewById(R.id.choice3);
         next = (Button) findViewById(R.id.confirm);
+
+        questionCounter = 0;
+        category_no = 0;
+        score = 0;
+        opSelected = 0;
 
         Intent intent = getIntent();
         category_no = intent.getIntExtra("category_no", 0);
@@ -322,6 +328,12 @@ public class QuizPage extends AppCompatActivity {
                 timeupDialog.dismiss();
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        countDownTimer.cancel();
     }
 
 }

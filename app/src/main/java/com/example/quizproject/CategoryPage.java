@@ -33,7 +33,7 @@ public class CategoryPage extends AppCompatActivity {
 
         mImageUrls.add(R.drawable.general_pic);
         mNames.add("General Knowledge");
-        mDescription.add("For those who has useless general knowledge!");
+        mDescription.add("Useless general knowledge!");
 
         mImageUrls.add(R.drawable.maths_school);
         mNames.add("Maths");

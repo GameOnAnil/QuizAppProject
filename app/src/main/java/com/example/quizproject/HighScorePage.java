@@ -57,7 +57,7 @@ public class HighScorePage extends AppCompatActivity {
             txt_description.setText("Not bad for an Idiot!");
         }else
         {
-            txt_description.setText("GO Back To School Idiot!");
+            txt_description.setText("Go Back To School Idiot!");
         }
 
 

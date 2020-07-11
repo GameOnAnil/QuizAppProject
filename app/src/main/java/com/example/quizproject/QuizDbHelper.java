@@ -15,7 +15,7 @@ import java.util.List;
 
 public class QuizDbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "QuizProject.db";
-    private static final int DATABASE_VERSION = 8;
+    private static final int DATABASE_VERSION = 9;
 
     private SQLiteDatabase db;
 
@@ -192,7 +192,7 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         addQuestion2(m5);
         Question m6 = new Question("Which of the following numbers gives 240 when added to its own square?", "15", "16", "18", 1);
         addQuestion2(m6);
-        Question m7 = new Question("83 × 82 × 8-5 is", "8", "1", "None of these", 2);
+        Question m7 = new Question("83 × 82 × 8-5 is", "8", "1", "None of these", 3);
         addQuestion2(m7);
         Question m8 = new Question("The simplest form of 1.5 : 2.5 is", "6 : 10", "0.75 : 1.25", "3 : 5", 3);
         addQuestion2(m8);

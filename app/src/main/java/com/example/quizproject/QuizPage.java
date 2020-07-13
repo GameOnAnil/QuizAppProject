@@ -56,7 +56,6 @@ public class QuizPage extends AppCompatActivity {
     Dialog rightDiaglog, wrongDialog, timeupDialog;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,9 +88,9 @@ public class QuizPage extends AppCompatActivity {
             questionList = dbHelper.getAllQuestions3();
         } else if (category_no == 4) {
             questionList = dbHelper.getAllQuestions4();
-        }else if (category_no == 5){
+        } else if (category_no == 5) {
             questionList = dbHelper.getAllQuestions5();
-        }else if(category_no == 6){
+        } else if (category_no == 6) {
             questionList = dbHelper.getAllQuestions6();
 
         }
